@@ -1,0 +1,921 @@
+/* SmartPark - Simple Student Project Stylesheet */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Verdana, sans-serif;
+  background-color: #eef4ff;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+/* Simple "P" Logo Box */
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 2px solid #1e3a8a;
+}
+
+.nav-badge {
+  background-color: #ffffff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+}
+
+/* Login Page */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #dbeafe;
+}
+
+.login-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  padding: 28px 24px;
+  border: 3px solid #2563eb;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.login-logo h1 {
+  font-size: 26px;
+  color: #1e3a8a;
+}
+
+.login-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: #2563eb;
+  color: #ffffff;
+  margin-top: 4px;
+}
+
+.login-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.demo-fill-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.demo-credentials-box {
+  margin-top: 18px;
+  background-color: #fefce8;
+  border: 2px dashed #eab308;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.demo-credentials-box h3 {
+  font-size: 14px;
+  color: #854d0e;
+  margin-bottom: 6px;
+}
+
+.demo-credentials-box p {
+  margin-bottom: 4px;
+}
+
+.demo-credentials-box code {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #111827;
+}
+
+.login-demo-note {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border-bottom: 4px solid #facc15;
+}
+
+.nav-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  background-color: #1e40af;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-greeting {
+  font-size: 14px;
+  color: #fef08a;
+  font-weight: bold;
+}
+
+.nav-btn {
+  background-color: #facc15;
+  color: #111827;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nav-btn:hover {
+  background-color: #fde047;
+}
+
+.logout-btn {
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Main Content Layout */
+.main-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 24px 20px 44px;
+}
+
+/* Hero Banner (Centered Student Style) */
+.hero-banner {
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 26px 24px;
+  margin-bottom: 28px;
+  text-align: center;
+  border: 3px solid #1e3a8a;
+}
+
+.hero-customer {
+  background-color: #2563eb;
+  border-color: #1e3a8a;
+}
+
+.hero-admin {
+  background-color: #7c2d12;
+  border-color: #431407;
+}
+
+.hero-banner h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.hero-banner p {
+  font-size: 15px;
+  color: #f3f4f6;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.hero-banner .demo-note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #fef08a;
+  font-weight: bold;
+}
+
+/* Section Blocks */
+.section-block {
+  margin-bottom: 34px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  display: inline-block;
+  font-size: 22px;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 3px solid #2563eb;
+}
+
+.section-header p {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* 1. Colourful Dashboard Cards */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.dash-card {
+  border-radius: 10px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card-blue {
+  background-color: #dbeafe;
+  border: 2px solid #2563eb;
+}
+
+.card-green {
+  background-color: #dcfce7;
+  border: 2px solid #16a34a;
+}
+
+.card-red {
+  background-color: #fee2e2;
+  border: 2px solid #dc2626;
+}
+
+.card-yellow {
+  background-color: #fef9c3;
+  border: 2px solid #ca8a04;
+}
+
+.dash-icon {
+  font-size: 30px;
+}
+
+.dash-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-label {
+  font-size: 14px;
+  color: #374151;
+  font-weight: bold;
+}
+
+.dash-number {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card-blue .dash-number {
+  color: #1d4ed8;
+}
+
+.card-green .dash-number {
+  color: #15803d;
+}
+
+.card-red .dash-number {
+  color: #b91c1c;
+}
+
+.card-yellow .dash-number {
+  color: #a16207;
+}
+
+/* 2. Vehicle Categories */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.category-card {
+  background-color: #ffffff;
+  border: 2px solid #93c5fd;
+  border-top: 5px solid #2563eb;
+  border-radius: 10px;
+  padding: 18px 14px;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.category-card:hover {
+  background-color: #eff6ff;
+  border-color: #1d4ed8;
+}
+
+.cat-emoji {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.category-card h3 {
+  font-size: 17px;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.cat-sub {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.cat-rate {
+  display: inline-block;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* Admin Price Management Panel */
+.admin-price-card {
+  background-color: #fffbeb;
+  border: 2px solid #d97706;
+  border-top: 6px solid #b45309;
+  border-radius: 10px;
+  padding: 22px 24px;
+}
+
+.price-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.admin-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.admin-btn-row .secondary-btn {
+  margin-top: 0;
+}
+
+.admin-save-btn {
+  width: 100%;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: #b45309;
+  color: #ffffff;
+}
+
+.admin-save-btn:hover {
+  background-color: #92400e;
+}
+
+/* 3. Parking Availability Slots */
+.slots-top-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.slots-top-bar .section-header {
+  margin-bottom: 0;
+}
+
+.legend-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background-color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 2px solid #cbd5e1;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #374151;
+}
+
+.color-box {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid #374151;
+}
+
+.box-green {
+  background-color: #22c55e;
+}
+
+.box-yellow {
+  background-color: #facc15;
+}
+
+.box-red {
+  background-color: #ef4444;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  color: #1f2937;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background-color: #e2e8f0;
+}
+
+.filter-btn.active {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+.notice-banner {
+  background-color: #fef2f2;
+  border: 2px solid #ef4444;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.slot-card {
+  border-radius: 10px;
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.slot-available {
+  background-color: #bbf7d0;
+  border: 2px solid #16a34a;
+  color: #14532d;
+}
+
+.slot-available:hover {
+  background-color: #86efac;
+}
+
+.slot-booked {
+  background-color: #fef08a;
+  border: 2px solid #ca8a04;
+  color: #713f12;
+}
+
+.slot-full {
+  background-color: #fecaca;
+  border: 2px solid #dc2626;
+  color: #7f1d1d;
+}
+
+.slot-number {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.slot-zone {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.slot-status-text {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.slot-vehicle-info {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* 4. Two-Column Form Section */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.panel-card {
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+#book {
+  border-top: 6px solid #16a34a;
+}
+
+#release {
+  border-top: 6px solid #dc2626;
+}
+
+.panel-header {
+  margin-bottom: 16px;
+}
+
+.panel-header h2 {
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.panel-header p {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #374151;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  background-color: #ffffff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Price Preview Box */
+.fee-preview-box {
+  background-color: #eff6ff;
+  border: 2px solid #93c5fd;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.fee-row,
+.fee-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.fee-total-row {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 2px solid #93c5fd;
+  margin-bottom: 0;
+  font-size: 17px;
+  color: #1e3a8a;
+}
+
+/* Buttons */
+.primary-btn,
+.release-btn,
+.secondary-btn {
+  width: 100%;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.primary-btn {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  background-color: #15803d;
+}
+
+.release-btn {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.release-btn:hover {
+  background-color: #b91c1c;
+}
+
+.secondary-btn {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  border: 1px solid #9ca3af;
+  margin-top: 8px;
+}
+
+.secondary-btn:hover {
+  background-color: #d1d5db;
+}
+
+/* Confirmation and Error Messages */
+.message-box {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.message-success {
+  background-color: #dcfce7;
+  border: 2px solid #16a34a;
+  color: #14532d;
+}
+
+.message-error {
+  background-color: #fee2e2;
+  border: 2px solid #dc2626;
+  color: #7f1d1d;
+}
+
+.hidden {
+  display: none;
+}
+
+.release-helper-box {
+  margin-top: 18px;
+  background-color: #f9fafb;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.release-helper-box h3 {
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.active-vehicles-text {
+  font-size: 13px;
+  color: #374151;
+  font-weight: bold;
+}
+
+.reset-box {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 2px dashed #cbd5e1;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* 5. Booking Summary Table */
+.table-wrapper {
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 11px 12px;
+  text-align: left;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.summary-table th {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.summary-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.summary-table tbody tr:hover {
+  background-color: #eff6ff;
+}
+
+.status-occupied {
+  color: #b45309;
+  font-weight: bold;
+}
+
+.status-released {
+  color: #15803d;
+  font-weight: bold;
+}
+
+.table-release-btn {
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.table-release-btn:hover {
+  background-color: #dc2626;
+}
+
+
+/* Responsive Design */
+@media (max-width: 960px) {
+  .dashboard-grid,
+  .category-grid,
+  .slots-grid,
+  .price-inputs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .two-column-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-grid,
+  .category-grid,
+  .slots-grid,
+  .form-row,
+  .price-inputs-grid,
+  .admin-btn-row {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-banner h1 {
+    font-size: 22px;
+  }
+}

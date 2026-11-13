@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartPark – Vehicle Parking Management System</title>
+    <meta
+      name="description"
+      content="A simple beginner-friendly vehicle parking management web application built with HTML, CSS, and basic JavaScript."
+    />
+    <meta property="og:title" content="SmartPark – Vehicle Parking Management System" />
+    <meta
+      property="og:description"
+      content="A simple beginner-friendly vehicle parking management web application built with HTML, CSS, and basic JavaScript."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Login Page Section (Shown before user logs in) -->
+    <section id="loginSection" class="login-page">
+      <div class="login-card">
+        <div class="login-logo">
+          <span class="logo-badge" aria-hidden="true">P</span>
+          <h1>SmartPark</h1>
+        </div>
+
+        <p class="login-subtitle">Vehicle Parking Management System (College Project)</p>
+
+        <form id="loginForm" onsubmit="loginUser(event)">
+          <div class="form-group">
+            <label for="loginUsername">Username</label>
+            <input
+              type="text"
+              id="loginUsername"
+              placeholder="Enter username"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+          <div class="demo-fill-row">
+            <button type="button" class="secondary-btn" onclick="fillDemoLogin('admin')">
+              Demo Admin
+            </button>
+            <button type="button" class="secondary-btn" onclick="fillDemoLogin('customer')">
+              Demo Customer
+            </button>
+          </div>
+        </form>
+
+        <div id="loginMessage" class="message-box hidden"></div>
+
+        <div class="demo-credentials-box">
+          <h3>Demo Login Details</h3>
+          <p><strong>Admin:</strong> Username: <code>admin</code> | Password: <code>1234</code></p>
+          <p><strong>Customer:</strong> Username: <code>customer</code> | Password: <code>1234</code></p>
+          <p class="login-demo-note">
+            Frontend simulation login using JavaScript (no real database).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main SmartPark Application (Shown after login) -->
+    <div id="appSection" class="hidden">
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="#dashboard" class="logo-box">
+          <span class="logo-badge nav-badge" aria-hidden="true">P</span>
+          <span class="logo-text">SmartPark</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="#dashboard">Dashboard</a>
+          <a href="#categories">Vehicle Rates</a>
+          <a href="#slots">Parking Slots</a>
+          <a href="#book-release">Book &amp; Release</a>
+          <a href="#summary">Summary</a>
+        </nav>
+
+        <div class="nav-actions">
+          <span id="loggedInUserText" class="user-greeting">Welcome</span>
+          <a href="#book-release" class="nav-btn">Book Now</a>
+          <button type="button" class="logout-btn" onclick="logoutUser()">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <!-- Welcome / Intro Banner -->
+      <section id="heroBanner" class="hero-banner hero-customer">
+        <div class="hero-content">
+          <h1>🅿️ SmartPark – Vehicle Parking Management System</h1>
+          <p id="roleDescriptionText">
+            Welcome! Check available parking slots, calculate parking fees,
+            book a slot, and release your vehicle easily.
+          </p>
+          <p class="demo-note">
+            Note: This is a college frontend project built using HTML, CSS, and JavaScript
+            (slots and bookings are simulated in the browser, not connected to real sensors).
+          </p>
+        </div>
+      </section>
+
+      <!-- 1. Colourful Dashboard Cards -->
+      <section id="dashboard" class="section-block">
+        <div class="section-header">
+          <h2>Parking Dashboard</h2>
+          <p>Overview of total, available, booked, and occupied parking spaces</p>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="dash-card card-blue">
+            <div class="dash-icon" aria-hidden="true">🅿️</div>
+            <div class="dash-info">
+              <span class="dash-label">Total Slots</span>
+              <strong id="totalSlotsCount" class="dash-number">16</strong>
+            </div>
+          </div>
+
+          <div class="dash-card card-green">
+            <div class="dash-icon" aria-hidden="true">✅</div>
+            <div class="dash-info">
+              <span class="dash-label">Available Slots</span>
+              <strong id="availableSlotsCount" class="dash-number">0</strong>
+            </div>
+          </div>
+
+          <div class="dash-card card-red">
+            <div class="dash-icon" aria-hidden="true">🚗</div>
+            <div class="dash-info">
+              <span class="dash-label">Occupied Slots</span>
+              <strong id="occupiedSlotsCount" class="dash-number">0</strong>
+            </div>
+          </div>
+
+          <div class="dash-card card-yellow">
+            <div class="dash-icon" aria-hidden="true">🎟️</div>
+            <div class="dash-info">
+              <span class="dash-label">Booked Slots</span>
+              <strong id="bookedSlotsCount" class="dash-number">0</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Vehicle Categories & Hourly Rates -->
+      <section id="categories" class="section-block">
+        <div class="section-header">
+          <h2>Vehicle Categories &amp; Hourly Rates</h2>
+          <p>Click any vehicle type below to select it for booking</p>
+        </div>
+
+        <div class="category-grid">
+          <button
+            type="button"
+            class="category-card cat-bike"
+            onclick="chooseVehicleCategory('Two Wheeler')"
+          >
+            <span class="cat-emoji" aria-hidden="true">🏍️</span>
+            <h3>Two Wheeler</h3>
+            <p class="cat-sub">Bike / Scooter</p>
+            <span id="rateTwoWheeler" class="cat-rate">₹10 / hour</span>
+          </button>
+
+          <button
+            type="button"
+            class="category-card cat-auto"
+            onclick="chooseVehicleCategory('Three Wheeler')"
+          >
+            <span class="cat-emoji" aria-hidden="true">🛺</span>
+            <h3>Three Wheeler</h3>
+            <p class="cat-sub">Auto Rickshaw</p>
+            <span id="rateThreeWheeler" class="cat-rate">₹15 / hour</span>
+          </button>
+
+          <button
+            type="button"
+            class="category-card cat-car"
+            onclick="chooseVehicleCategory('Four Wheeler')"
+          >
+            <span class="cat-emoji" aria-hidden="true">🚘</span>
+            <h3>Four Wheeler</h3>
+            <p class="cat-sub">Car</p>
+            <span id="rateFourWheeler" class="cat-rate">₹20 / hour</span>
+          </button>
+
+          <button
+            type="button"
+            class="category-card cat-heavy"
+            onclick="chooseVehicleCategory('Heavy Vehicle')"
+          >
+            <span class="cat-emoji" aria-hidden="true">🚛</span>
+            <h3>Heavy Vehicle</h3>
+            <p class="cat-sub">Truck / Bus</p>
+            <span id="rateHeavyVehicle" class="cat-rate">₹40 / hour</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Admin Only: Update Parking Prices -->
+      <section id="adminPriceSection" class="section-block hidden">
+        <div class="admin-price-card">
+          <div class="panel-header">
+            <h2>Admin Control Panel – Change Parking Prices</h2>
+            <p>
+              Only visible to Admin. Update hourly rates (₹) for any vehicle category below.
+            </p>
+          </div>
+
+          <form id="priceForm" onsubmit="updatePrices(event)">
+            <div class="price-inputs-grid">
+              <div class="form-group">
+                <label for="priceTwoWheeler">Two Wheeler (₹/hr)</label>
+                <input type="number" id="priceTwoWheeler" min="1" max="500" required />
+              </div>
+
+              <div class="form-group">
+                <label for="priceThreeWheeler">Three Wheeler (₹/hr)</label>
+                <input type="number" id="priceThreeWheeler" min="1" max="500" required />
+              </div>
+
+              <div class="form-group">
+                <label for="priceFourWheeler">Four Wheeler (₹/hr)</label>
+                <input type="number" id="priceFourWheeler" min="1" max="500" required />
+              </div>
+
+              <div class="form-group">
+                <label for="priceHeavyVehicle">Heavy Vehicle (₹/hr)</label>
+                <input type="number" id="priceHeavyVehicle" min="1" max="500" required />
+              </div>
+            </div>
+
+            <div class="admin-btn-row">
+              <button type="submit" class="admin-save-btn">Update Prices</button>
+              <button type="button" class="secondary-btn" onclick="resetDefaultPrices()">
+                Reset Default Prices
+              </button>
+            </div>
+          </form>
+
+          <div id="priceMessage" class="message-box hidden"></div>
+        </div>
+      </section>
+
+      <!-- 3. Parking Availability Slots -->
+      <section id="slots" class="section-block">
+        <div class="slots-top-bar">
+          <div class="section-header">
+            <h2>Parking Slot Availability</h2>
+            <p>Click any green Available slot to select it in the booking form</p>
+          </div>
+
+          <div class="legend-box">
+            <span class="legend-item">
+              <span class="color-box box-green"></span> Green – Available
+            </span>
+            <span class="legend-item">
+              <span class="color-box box-yellow"></span> Yellow – Booked
+            </span>
+            <span class="legend-item">
+              <span class="color-box box-red"></span> Red – Full
+            </span>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <button
+            type="button"
+            class="filter-btn active"
+            id="filterAll"
+            onclick="filterSlots('All')"
+          >
+            All Slots
+          </button>
+          <button
+            type="button"
+            class="filter-btn"
+            id="filterAvailable"
+            onclick="filterSlots('Available')"
+          >
+            Available
+          </button>
+          <button
+            type="button"
+            class="filter-btn"
+            id="filterBooked"
+            onclick="filterSlots('Booked')"
+          >
+            Booked
+          </button>
+          <button
+            type="button"
+            class="filter-btn"
+            id="filterFull"
+            onclick="filterSlots('Full')"
+          >
+            Full
+          </button>
+        </div>
+
+        <div id="slotClickMessage" class="notice-banner hidden"></div>
+
+        <div id="slotsGrid" class="slots-grid">
+          <!-- Parking slot cards are added here by script.js -->
+        </div>
+      </section>
+
+      <!-- 4. Parking Booking & Release Parking -->
+      <section id="book-release" class="section-block">
+        <div class="two-column-layout">
+          <!-- Booking Form Card -->
+          <div class="panel-card" id="book">
+            <div class="panel-header">
+              <h2>Book a Parking Slot</h2>
+              <p>Fill in your details and check the total fee before booking</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="bookParking(event)">
+              <div class="form-group">
+                <label for="customerName">Customer Name</label>
+                <input
+                  type="text"
+                  id="customerName"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="vehicleNumber">Vehicle Number</label>
+                <input
+                  type="text"
+                  id="vehicleNumber"
+                  placeholder="e.g., KA-01-AB-1234"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="vehicleType">Vehicle Type</label>
+                  <select id="vehicleType" onchange="calculateFee()">
+                    <option value="Two Wheeler">Two Wheeler (Bike / Scooter) - ₹10/hr</option>
+                    <option value="Three Wheeler">Three Wheeler (Auto Rickshaw) - ₹15/hr</option>
+                    <option value="Four Wheeler" selected>Four Wheeler (Car) - ₹20/hr</option>
+                    <option value="Heavy Vehicle">Heavy Vehicle (Truck / Bus) - ₹40/hr</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="slotSelect">Select Available Slot</label>
+                  <select id="slotSelect" required>
+                    <!-- Populated dynamically by script.js -->
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="parkingHours">Expected Duration (Hours)</label>
+                <input
+                  type="number"
+                  id="parkingHours"
+                  min="1"
+                  max="24"
+                  value="2"
+                  oninput="calculateFee()"
+                  required
+                />
+              </div>
+
+              <!-- Price Calculation Box (Displayed Before Confirming) -->
+              <div class="fee-preview-box">
+                <div class="fee-row">
+                  <span>Hourly Rate:</span>
+                  <strong id="hourlyRateText">₹20 / hour</strong>
+                </div>
+                <div class="fee-row">
+                  <span>Calculation:</span>
+                  <span id="feeFormulaText">₹20 × 2 hours</span>
+                </div>
+                <div class="fee-total-row">
+                  <span>Total Parking Fee:</span>
+                  <strong id="totalFeeText">₹40</strong>
+                </div>
+              </div>
+
+              <button type="submit" class="primary-btn">Book Parking</button>
+            </form>
+
+            <div id="bookingMessage" class="message-box hidden"></div>
+          </div>
+
+          <!-- Release Parking Card -->
+          <div class="panel-card" id="release">
+            <div class="panel-header">
+              <h2>Release Parking Slot</h2>
+              <p>Enter your vehicle number to vacate your slot and make it available</p>
+            </div>
+
+            <form id="releaseForm" onsubmit="releaseParking(event)">
+              <div class="form-group">
+                <label for="releaseVehicleNumber">Vehicle Number</label>
+                <input
+                  type="text"
+                  id="releaseVehicleNumber"
+                  placeholder="Enter parked vehicle number (e.g., MH-12-DE-4521)"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="release-btn">Release Parking</button>
+            </form>
+
+            <div id="releaseMessage" class="message-box hidden"></div>
+
+            <div class="release-helper-box">
+              <h3>Currently Active Vehicle Numbers</h3>
+              <p id="activeVehiclesList" class="active-vehicles-text">
+                None parked right now.
+              </p>
+            </div>
+
+            <div id="adminResetBox" class="reset-box hidden">
+              <p>Admin Action: Restart the demo with default slots and bookings?</p>
+              <button type="button" class="secondary-btn" onclick="resetDemoData()">
+                Reset Demo Data
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Booking Summary Table -->
+      <section id="summary" class="section-block">
+        <div class="section-header">
+          <h2>Booking Summary</h2>
+          <p>Complete record of customer bookings, fees, and current slot status</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Vehicle Number</th>
+                <th>Vehicle Type</th>
+                <th>Slot No.</th>
+                <th>Duration</th>
+                <th>Total Fee</th>
+                <th>Booking Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="summaryTableBody">
+              <!-- Booking rows added dynamically by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
